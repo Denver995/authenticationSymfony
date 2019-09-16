@@ -1,0 +1,5 @@
+{% for navItem in items %}
+	<li class="{{navItem.itemClass}}">
+        <span class="{{navItem.icon}}"></span><a class="{{navItem.linkClass}}" href="{{navItem.link}}"> {{navItem.title}} </a>
+    </li>
+{% endfor %}

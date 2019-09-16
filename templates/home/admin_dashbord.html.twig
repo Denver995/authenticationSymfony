@@ -1,0 +1,54 @@
+{% extends 'main.html.twig' %}
+
+{% block title %}Home page{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+      .menu-item {
+        margin-top: 20px;
+      }
+
+      .card {
+        /* Add shadows to create the "card" effect */
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        transition: 0.3s;
+      }
+
+      /* On mouse-over, add a deeper shadow */
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+      }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="container dashboard card-body card">
+        <div class="row dashboard-items">
+            {% for menu in menuItems %}
+                <div class="col-sm-6 col-md-4 col-lg-3 menu-item">
+                    <div class="card text-white bg-{{menu.bgcolor}}">
+                      <div class="card-body pb-0">
+                        <div class="btn-group float-right">
+                          <button class="btn btn-transparent dropdown-toggle p-0" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="icon-settings"></i>
+                          </button>
+                          <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                          </div>
+                        </div>
+                        <div class="text-value bg"><a href="{{ menu.link }}">{{ menu.title }}</a></div>
+                        <div>{{menu.title}}</div>
+                      </div>
+                      <div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+                        <canvas class="chart" id="card-chart1" height="70"></canvas>
+                      </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-12 dashboard-others">
+        </div>
+    </div>
+{% endblock %}
